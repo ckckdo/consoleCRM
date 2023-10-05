@@ -69,6 +69,8 @@ public class Search {
             }
 
             //データの表示
+            System.out.println("―――――――――   検索結果  ――――――――――");
+
             for (String[] row : data) {
                 String number = row[0];
                 String name = row[1];
@@ -86,6 +88,7 @@ public class Search {
                 System.out.println("登録日: " + issueDate);
                 System.out.println();
             }
+            System.out.println("――――――――――――――――――――――――――");
 
         } catch ( IOException e) {
             e.printStackTrace();
@@ -102,6 +105,7 @@ public class Search {
         return true;
     }
 
+    //検索条件の入力
     public static String[] searchMenu() {
 
         Scanner scanner = new Scanner(System.in);
@@ -137,7 +141,7 @@ public class Search {
 
             try {
                 sort = scanner.nextInt();
-                if (sort < 0 || sort > 2) {
+                if (sort != 1 && sort != 2) {
                     System.out.println("入力された番号の順番はありません。");
                 } else {
                     jokenSort[1] = String.valueOf(sort);

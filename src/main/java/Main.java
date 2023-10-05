@@ -1,19 +1,36 @@
 import java.util.Scanner;
+import java.io.File;
 
 public class Main {
 
     public static  void main (String[] args){
-        //ファイルパス
-        String FilePath = "C:\\Users\\Owner\\Desktop\\User.txt";
         Scanner scanner = new Scanner(System.in);
         boolean StartMenu = true;
+        boolean InFile = true;
+        String FilePath= "";
+        //起動メッセージ
+        System.out.println("会員管理システムを起動しました。");
+
+        //パスの入力
+        while (InFile) {
+            System.out.println("データを保存するテキストファイルのパスを入力してください。＞");
+            String inputFilePath = scanner.nextLine();
+            File file = new File(inputFilePath);
+            if (!file.exists() || !file.isFile()) {
+                System.out.println("指定したファイルが存在しません。");
+            } else{
+                //ファイルパス
+                FilePath = inputFilePath;
+                InFile = false;
+            }
+        }
 
         //メニューの表示
         while (StartMenu) {
             System.out.println("実行するメニューの番号を入力してください ");
             System.out.println("1：登録　2：検索　0:終了　＞");
             try {
-                int ChoiceMenu = -1;
+                int ChoiceMenu ;
                 ChoiceMenu = scanner.nextInt();
 
                 if (ChoiceMenu < 0 || ChoiceMenu > 2) {
@@ -29,7 +46,7 @@ public class Main {
                             break;
                         case 2:  //検索
                             System.out.println("検索します。");
-                            String[] data = new String[2];
+                            String[] data ;
                             data = Search.searchMenu() ;
                             if(!Search.readTxt(FilePath,data)){
                                 System.out.println("はじめからやり直してください。");

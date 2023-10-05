@@ -8,8 +8,8 @@ public class Message {
 
     //メッセージを取得する
     public static String getMessage (int Act){
-        String inf = "";
-        String ex = "";
+        String inf ;
+        String ex ;
 
         switch (Act){
             case 0 :
@@ -43,11 +43,11 @@ public class Message {
     //会員番号の入力
     public static String kaiNumber(){
         Scanner scanner = new Scanner(System.in);
-        boolean kaiNumbnerFlg = false;
-        int kaiNumber = -1;
+        boolean kaiNumberFlg = false;
+        int kaiNumber ;
         String strNumber ="";
 
-        while (!kaiNumbnerFlg) {
+        while (!kaiNumberFlg) {
             System.out.print(Message.getMessage(4));
             try {
             strNumber = scanner.nextLine();
@@ -58,7 +58,7 @@ public class Message {
                 } else if(strNumber.length() < 3 || strNumber.length() > 4 ){
                     System.out.println("3桁の半角数字で入力してください。");
                 }else {
-                    kaiNumbnerFlg = true;
+                    kaiNumberFlg = true;
                 }
             } catch (java.util.InputMismatchException | NumberFormatException e ){
                 System.out.println("無効な入力です。整数を入力してください。＞");
